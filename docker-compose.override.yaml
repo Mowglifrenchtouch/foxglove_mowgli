@@ -1,9 +1,10 @@
 services:
   foxglove_bridge:
     build:
-      context: ./foxglove_bridge_docker
+      context: .
+      dockerfile: ./foxglove_bridge_docker/Dockerfile
     network_mode: host
     environment:
-      - ROS_MASTER_URI=http://localhost:11311
+      - ROS_MASTER_URI=http://${ROS_IP}:11311
       - ROS_IP=${ROS_IP}
     restart: unless-stopped
